@@ -81,9 +81,11 @@ export default {
 
     try {
       if (action === 'visit') {
+        // เก็บว่า contact เคยเข้าดู EP นี้
         await appendEp(token, contactId, 'rerun_register', ep);
       } else if (action === 'watched') {
-        await appendEp(token, contactId, 'rerun_register', ep);
+        // เก็บว่า contact ดูวิดีโอถึง 80% หรือจบแล้ว
+        await appendEp(token, contactId, 'rerun_watched', ep);
       } else {
         return json({ error: `action ไม่รู้จัก: ${action}` }, 400);
       }
